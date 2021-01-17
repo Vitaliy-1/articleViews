@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.generic.articleViews.name">Article Views Plugin</message>
+	<message key="plugins.generic.articleViews.description">Displays views count of article in issue TOC</message>
+
+	<message key="plugins.generic.articleViews.article.views">Article views:</message>
+</locale>
