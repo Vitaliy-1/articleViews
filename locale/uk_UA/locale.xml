@@ -5,5 +5,5 @@
 	<message key="plugins.generic.articleViews.name">Перегляд Публікацій</message>
 	<message key="plugins.generic.articleViews.description">Відображає кількість переглядів статей у випуску</message>
 
-	<message key="plugins.generic.articleViews.article.views">Перегляди статті:</message>
+	<message key="plugins.generic.articleViews.article.views">Переглядів статті:</message>
 </locale>
