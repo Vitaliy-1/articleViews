@@ -34,29 +34,41 @@ class ArticleViewsPlugin extends GenericPlugin {
 	/**
 	 * @param $hookname string
 	 * @param $args array
-	 * Add data to the issue TOC related pages
+	 * @brief Add data to the issue TOC related pages
 	 */
 	function callbackArticleSummary($hookname, $args) {
 		$smarty =& $args[1];
 		$output =& $args[2];
 		$article = $smarty->getTemplateVars('article'); /* @var $article PublishedArticle */
 		$views = $article->getViews();
-		$smarty->assign('views', $views);
 
+		$galleyDao = DAORegistry::getDAO('ArticleGalleyDAO'); /* @var $galleyDao ArticleGalleyDAO */
+		$galleysFactory = $galleyDao->getBySubmissionId($article->getId(), $this->getCurrentContextId()); /* @var $galleysFactory DAOResultFactory */
+		$galleyViews = 0;
+		foreach ($galleysFactory->toArray() as $galley) {
+			/* @var $galley ArticleGalley */
+			$galleyViews += $galley->getViews();
+		}
+
+		$smarty->assign('views', $views);
+		$smarty->assign([
+			'views' => $views,
+			'galleyViews' => $galleyViews,
+		]);
 		$output .= $smarty->fetch($this->getTemplateResource('articleViews.tpl'));
 	}
 
 	/**
 	 * @param $hookname string
 	 * @param $args array
-	 *
+	 * @brief Add Styling related to article views count
 	 */
 	function templateMgrDisplay($hookname, $args) {
 		$smarty =& $args[0];
 		$template = $args[1];
 		if ($template != 'frontend/pages/issue.tpl' && $template != 'frontend/pages/indexJournal.tpl') return false;
 		$baseUrl = $this->getRequest()->getBaseUrl() . '/' . $this->getPluginPath();
-		$smarty->addStyleSheet('articleViews', $baseUrl . '/styles/general.less');
+		$smarty->addStyleSheet('articleViews', $baseUrl . '/styles/general.css');
 	}
 }
 

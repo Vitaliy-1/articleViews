@@ -5,5 +5,6 @@
 	<message key="plugins.generic.articleViews.name">Article Views Plugin</message>
 	<message key="plugins.generic.articleViews.description">Displays views count of article in issue TOC</message>
 
-	<message key="plugins.generic.articleViews.article.views">Article views:</message>
+	<message key="plugins.generic.articleViews.article.views">Abstract views:</message>
+	<message key="plugins.generic.articleViews.galleys.views">PDF Downloads:</message>
 </locale>
