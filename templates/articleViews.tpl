@@ -4,8 +4,8 @@
 		<span class="count article_views">{$views}</span>
 		{if $galleyViews}
 			<span class="delimiter">|</span>
+			<span class="views galley_views">{translate key="plugins.generic.articleViews.galleys.views"}</span>
+			<span class="count galley_views">{$galleyViews}</span>
 		{/if}
-		<span class="views galley_views">{translate key="plugins.generic.articleViews.galleys.views"}</span>
-		<span class="count galley_views">{$galleyViews}</span>
 	</div>
 {/if}
